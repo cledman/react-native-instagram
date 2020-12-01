@@ -1,24 +1,13 @@
+import 'react-native-gesture-handler';
 import React from 'react';
-import { StyleSheet, View, Text } from 'react-native';
+import { StatusBar } from 'react-native';
+import Routes from './routes';
 
-const styles = StyleSheet.create({
-  container: {
-    alignItems: 'center',
-    backgroundColor: 'red',
-    flex: 1,
-    justifyContent: 'center',
-  },
-  title: {
-    fontSize: 24,
-    margin: 10,
-    textAlign: 'center',
-  },
-});
-
-export default function App() {
+export default function App () {
   return (
-    <View style={styles.Container}>
-      <Text style={styles.Title}>Hellow</Text>
-    </View>
+    <>
+      <StatusBar barStyle="dark-content" backgroundColor="#f5f5f5" />
+      <Routes />
+    </>
   );
 }
