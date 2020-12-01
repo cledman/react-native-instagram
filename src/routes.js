@@ -4,9 +4,11 @@ import { createStackNavigator } from "@react-navigation/stack";
 
 import Feed from './Pages/Feed';
 
+import Header from './componentes/Header';
+
 const Stack = createStackNavigator();
 
-export default function Routes(){
+export default function Routes() {
   return (
     <NavigationContainer>
       <Stack.Navigator>
@@ -14,13 +16,12 @@ export default function Routes(){
           name="Feed"
           component={Feed}
           options={{
-            title: 'Feed',
-            headerTitleAlign: 'center',
+            headerTitle: () => <Header />,
             headerStyle: {
               backgroundColor: '#f5f5f5',
             },
           }}
-         />
+        />
       </Stack.Navigator>
     </NavigationContainer>
   );
