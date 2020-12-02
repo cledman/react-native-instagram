@@ -1,4 +1,4 @@
-# Techs
+# Instagram Clone
 
  This is the project from a course from [Digital Innovation One](https://digitalinnovation.one/) and it´s made with [React Native](https://reactnative.dev/). It´s an [Instagram](https://www.instagram.com/) clone to show some data fetched fom an api.
 
