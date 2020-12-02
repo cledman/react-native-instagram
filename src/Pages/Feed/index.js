@@ -1,13 +1,23 @@
-import React, {useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { FlatList } from 'react-native';
 
 import api from '../../services/api';
-import { Container, Post, Header, Avatar, Name, Description, Loading } from './styles';
+import {
+  Container,
+  Post,
+  Header,
+  Avatar,
+  Name,
+  Description,
+  Loading,
+} from './styles';
+
+import FeedImage from '../../componentes/FeedImage';
 
 export default function Feed() {
   const [feed, setFeed] = useState([]);
-  const [loading, setLoading] = useState([false]);
-  const [refreshing, setRefreshing] = useState([false]);
+  const [loading, setLoading] = useState(false);
+  const [refreshing, setRefreshing] = useState(false);
 
   async function loadPage() {
     setLoading(true);
@@ -18,9 +28,9 @@ export default function Feed() {
 
   useEffect(() => {
     loadPage();
-  },[]);
+  }, []);
 
-  async function refreshList(){
+  async function refreshList() {
     setRefreshing(true);
     await loadPage();
     setRefreshing(false);
@@ -36,6 +46,7 @@ export default function Feed() {
           viewAreaCoveragePercentThreshold: 10,
         }}
         showsVerticalScrollIndicator={false}
+        onRefresh={refreshList}
         refreshing={refreshing}
         ListFooterComponent={loading && <Loading />}
         renderItem={({ item }) => (
@@ -44,6 +55,12 @@ export default function Feed() {
               <Avatar source={{ uri: item.author.avatar }} />
               <Name>{item.author.name}</Name>
             </Header>
+
+            <FeedImage
+              aspectRatio={item.aspectRatio}
+              smallSource={{ uri: item.image }}
+              source={{ uri: item.small }}
+            />
 
             <Description>
               <Name>{item.author.name}</Name> {item.description}
